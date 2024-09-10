@@ -1,24 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import ValueDisplay from "./components/ValueDisplay";
+import "./App.css";
+import styles from "./components/styles.module.css";
 
 function App() {
+  const [value, setValue] = useState("");
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <div className={styles.formWrapper}>
+        <h1>Current and Previous Value App.</h1>
+        <input
+          autoFocus
+          type="text"
+          value={value}
+          onChange={(el) => setValue(el.target.value)}
+          placeholder="Write something here..."
+        />
+      </div>
+      <ValueDisplay value={value} />
+    </>
   );
 }
 
